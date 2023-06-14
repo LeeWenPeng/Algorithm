@@ -1,0 +1,40 @@
+# 问题：
+
+## 一货物装载问题
+
+**题目**：[装货物 (nowcoder.com)](https://ac.nowcoder.com/acm/problem/200532)
+
+
+
+```c++
+#include <iostream>
+#include <vector>
+using namespace std;
+bool doThingsCan(vector<int> things, int x, int W) {
+    
+}
+int main() {
+    int T; // 组数
+    scanf_s("%d", &T);
+    int n, x, W;
+    scanf_s("%d %d %d", &n, &x, &W);
+    for (int i = 0; i < T; ++i) {
+        vector<int> things;
+        char c;
+        while (scanf("%c", &c ) != '\n') {
+            int temp;
+            scanf_s("%d", &temp);
+            things.push_back(temp);
+        }
+        if (doThingsCan()) {
+            printf("true");
+        }
+        else {
+            printf("false");
+        }
+        things.clear();
+    }
+    return 0;
+}
+```
+
