@@ -174,9 +174,9 @@ $$
 结果：
 
 1.   如果 $f(n) = O(n^{log_b{a} - \epsilon})$ $(\epsilon > 0)$ ，则$T(n) = \Theta (n^{log_b{a}})$ 
-     +   如果$f(n) \leq n^{log_b{a} - \epsilon}$ ，则$T(n) = \Theta (n^{log_b{a}})$ 
+     +   **如果$f(n) \leq n^{log_b{a} - \epsilon}$ ，则$T(n) = \Theta (n^{log_b{a}})$** 
 2.   如果$f(n) = \Theta(n^{log_b{a}}log^k{n})$ $(k \geq 0)$，则$T(n) = \Theta(n^{log_b{a} \space log^{k+1}{n}})$
-     +   如果$f(n) == n^{log_b{a}}log^k{n}$ ， 则$T(n) = \Theta(n^{log_b{a} \space log^{k+1}{n}})$
+     +   **如果$f(n) == n^{log_b{a}}log^k{n}$ ， 则$**T(n) = \Theta(n^{log_b{a} \space log^{k+1}{n}})$
 3.   如果$f(n) = \Omega(n^{log_b{a}+\epsilon})$ $(\epsilon > 0)$ ,且$a(f(n/b) \leq cf(n))$ ，则$T(n) = \Theta(f(n))$
      +   如果$f(n) \geq n^{log_b{a}+\epsilon}$ ，且 $a(f(n/b) \leq cf(n))$ ，则 $T(n) = \Theta(f(n))$
 

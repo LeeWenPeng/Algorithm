@@ -1,0 +1,111 @@
+题目https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof/submissions/
+
+## 思路：
+
+双指针遍历
+
+p用于寻找`val`节点
+
+q用于保存`p`前一个节点
+
+当找到`val`节点时，`q`指向`val`节点的前一个节点
+
++   `q->next = p->next`，将`val`节点从链表中删除
+
++   `p->val = NULL; p = nullptr` 删除`val`节点
+
+### 代码
+
+```c++
+class Solution {
+public:
+	ListNode* deleteNode(ListNode* head, int val) {
+		if (head == nullptr) return head; // head无节点时
+		if (head->val == val) {// head只有一个节点时
+			return head->next;
+		}
+		ListNode* p = head, * q = p;
+		while (p != nullptr) {
+			while (p != nullptr &&  p->val != val) { // 找到val对应节点
+				q = p; // 用q保留p前一个节点
+				p = p->next;
+			}
+			if (p == nullptr) return head; //未找到对应节点
+			q->next = p->next;
+			p->val = NULL;
+			p = nullptr;
+		}
+		return head;
+	}
+};
+```
+
+
+
+删除重复节点：
+
+题目：https://leetcode.cn/problems/remove-duplicates-from-sorted-list/submissions/
+
+
+
+代码
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+	ListNode* deleteDuplicates(ListNode* head) {
+		if (head == nullptr || head->next == nullptr) return head;
+		ListNode* p = head;
+		while (p != nullptr) {
+			if (p->next == nullptr) {
+				return head;
+			}
+			if (p->next->val == p->val) {
+				p->next = p->next->next;
+			}
+			else {
+				p = p->next;
+			}
+		}
+		return head;
+	}
+};
+```
+
+改进 增加节点删除操作
+
+```c++
+class Solution {
+public:
+	ListNode* deleteDuplicates(ListNode* head) {
+		if (head == nullptr || head->next == nullptr) return head;
+		ListNode* p = head,*q;
+		while (p != nullptr) {
+			if (p->next == nullptr) {
+				return head;
+			}
+			if (p->next->val == p->val) {
+				q = p->next;
+				p->next = p->next->next;
+				q->val = NULL;
+				delete q;
+			}
+			else {
+				p = p->next;
+			}
+		}
+		return head;
+	}
+};
+```
+
